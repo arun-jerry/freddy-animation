@@ -1,0 +1,348 @@
+<div class="flex">
+  <div class="cricle">
+    <svg width="auto" height="auto" viewBox="0 0 601 601" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Frame 1">
+    <rect width="601" height="601" fill="white"/>
+    <g id="freddy" class="straight-face">
+    <g id="nose-mouth" class="nose-mouth">
+      <g id="nose" class="straight-nose">
+      <path id="Vector" d="M366 369.429C403.714 331.143 403.714 269.143 366 230.571C328.286 192.286 266.857 192.286 228.857 230.571L128.286 332.571C90.5714 370.857 90.5714 432.857 128.286 471.429C166 509.714 227.429 509.714 265.429 471.429L366 369.429Z" fill="#459FFC"/>
+      <path id="Vector_2" d="M471.714 471.143C509.429 432.857 509.429 370.857 471.714 332.286L371.143 230.286C333.429 192 272 192 234 230.286C228.286 236 223.714 242 219.714 248.571C196.857 286.286 201.714 336.286 234 368.857L334.571 470.857C372.286 509.143 433.714 509.143 471.714 470.857V471.143Z" fill="#459FFC"/>
+      <path id="Vector_3" d="M394 299.143C394 277.143 386.571 254.286 371.714 236C370.286 234 368.286 232 366.571 230C348.286 211.143 324.286 201.714 300.286 201.429C276.286 201.429 252.286 211.143 234 230C232.286 231.714 230.286 233.714 228.857 236C213.714 254.286 206.571 277.143 206.571 299.143C206.571 324 215.714 349.143 234 368L300.286 436.286L366.571 368C384.857 349.143 394 324 394 299.143Z" fill="#12344D"/>
+      </g>
+    </g>
+    <g id="eyes" class="eyes">
+    <path id="left-eye" class="left-eye" d="M178 180C200 180 218 162 218 140C218 118 200 100 178 100C156 100 138 118 138 140C138 162 156 180 178 180Z" fill="#12344D"/>
+    <path id="right-eye" class="right-eye" d="M422.571 180C444.571 180 462.571 162 462.571 140C462.571 118 444.571 100 422.571 100C400.571 100 382.571 118 382.571 140C382.571 162 400.571 180 422.571 180Z" fill="#12344D"/>
+    </g>
+    </g>
+    </g>
+    </svg>
+  </div>
+  <div>
+    <input type="text" name="search" id="search" onfocus="onChangeEvent(this)" onblur="stopSearch(this)">
+  </div>
+</div>
+
+<script>
+  function onChangeEvent(element) {
+    debugger;
+    document.getElementById("nose").classList.remove('reset-nose');
+    document.getElementById("freddy").classList.remove('reset-face');
+    document.getElementById("eyes").classList.add('eyes-searching');
+    document.getElementById("nose").classList.add('searching-nose');
+    document.getElementById("freddy").classList.add('searching-face');
+    document.getElementById("left-eye").classList.add('searching');
+    document.getElementById("right-eye").classList.add('searching');
+  };
+
+  function stopSearch(element) {
+    document.getElementById("eyes").classList.remove('eyes-searching');
+    document.getElementById("freddy").classList.remove('searching-face');
+    document.getElementById("nose").classList.remove('searching-nose');
+    document.getElementById("left-eye").classList.remove('searching');
+    document.getElementById("right-eye").classList.remove('searching');
+    document.getElementById("left-eye").classList.remove('left-eye');
+    document.getElementById("right-eye").classList.remove('right-eye');
+    document.getElementById("nose").classList.add('reset-nose');
+    document.getElementById("freddy").classList.add('reset-face');
+    document.getElementById("left-eye").classList.add('resize-eye');
+    document.getElementById("right-eye").classList.add('resize-eye');
+    
+    document.getElementById("left-eye").classList.remove('searching');
+    document.getElementById("right-eye").classList.remove('searching');
+
+    setTimeout(function() {
+      document.getElementById("freddy").classList.add('straight-face');
+      document.getElementById("nose").classList.add('straight-nose');
+      document.getElementById("left-eye").classList.add('left-eye');
+      document.getElementById("right-eye").classList.add('right-eye');
+      document.getElementById("eyes").classList.add('eyes');
+      document.getElementById("left-eye").classList.remove('resize-eye');
+    document.getElementById("right-eye").classList.remove('resize-eye');
+    }, 700);
+  }
+
+</script>
+
+
+<style>
+
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+  }
+
+  #search {
+    padding: 11px;
+    border-radius: 25px;
+    margin-left: 6px;
+    border: 3px solid #dadada;
+    width: 400px;
+    font-size: 24px;
+    font-weight: 100;
+    font-family: sans-serif;
+    color: #1879d9;
+  }
+
+  .left-eye, .right-eye {
+    transform-origin: center;
+    animation: small-eyes 3s 0s cubic-bezier(0.78, 0.05, 0.2, 1.03) forwards;
+    animation-play-state: paused;
+  }
+
+  .left-eye.searching, .right-eye.searching {
+    transform-origin: center;
+    animation: small-eyes 3s 0s cubic-bezier(0.78, 0.05, 0.2, 1.03) forwards;
+    animation-play-state: running;
+  }
+
+    .eyes {
+      animation: jumpingAnimation 3s 0s cubic-bezier(0.78, 0.05, 0.2, 1.03) infinite;
+      animation-play-state: paused;
+    }
+
+    .eyes.eyes-searching {
+      animation: jumpingAnimation 3s 0s cubic-bezier(0.78, 0.05, 0.2, 1.03) infinite;
+      animation-play-state: running;
+    }
+
+
+    .straight-nose.searching-nose {
+      animation-play-state: running;
+    }
+
+    .straight-face {
+      animation: left-to-right 3s 0s cubic-bezier(0.78, 0.05, 0.2, 1.03) forwards;
+      animation-play-state: paused;
+    }
+
+    .straight-face.searching-face {
+      animation-play-state: running;
+    }
+
+
+    .straight-nose {
+      animation: slight-skew 3s 0s cubic-bezier(0.78, 0.05, 0.2, 1.03) forwards;
+      animation-play-state: paused; 
+    }
+
+    .reset-nose {
+      animation: slight-skew-reset 0.3s ease;
+    }
+
+    .reset-face {
+      animation: right-to-left 0.3s ease;
+    }
+
+    .resize-eye-size {
+      animation: resize-eyes 0.3s ease;
+    }
+
+
+    .cricle {
+        border: 3px solid #dadada;
+        border-radius: 50%;
+        text-align: center;
+        overflow: hidden;
+        height: 50px;
+        width: 50px;
+    }
+@keyframes jumpingAnimation {
+  0 {
+    transform: scaleY(1);
+    transform-origin: 0 163px;
+  }
+  5% {
+    transform-origin: 0 163px;
+    transform:scaleY(0);
+  }
+  8% {
+    transform-origin: 0 163px;
+    transform:scaleY(1);
+  }
+
+  20% {
+    transform-origin: 0 163px;
+    transform:scaleY(1);
+  }
+
+  24% {
+    transform-origin: 0 163px;
+    transform:scaleY(0);
+  }
+
+  28% {
+    transform-origin: 0 163px;
+    transform:scaleY(1);
+  }
+
+  38% {
+    transform-origin: 0 163px;
+    transform:scaleY(1);
+  }
+
+  100% {
+    transform-origin: 0 163px;
+    transform:scaleY(1);
+  }
+}
+
+@keyframes slight-skew {
+  0 {
+    transform: scaleY(1);
+  }
+  5% {
+    transform: scale3d(0.95, 1.03, 1);
+    transform-origin: center;
+  }
+  10% {
+    transform: scaleY(1);
+  }
+  16% {
+    transform: scaleY(1);
+  }
+
+  33% {
+    transform-origin: 0 163px;
+    transform: skew(184deg, 175deg);
+  }
+  80% {
+    transform-origin: 0 163px;
+    transform: skew(184deg, 175deg);
+  }
+
+  100% {
+    transform-origin: 0 163px;
+    transform: skew(184deg, 175deg);
+  }
+}
+
+@keyframes slight-skew-reset {
+  0% {
+    transform-origin: 0 163px;
+    transform: skew(184deg, 175deg);
+  }
+
+  10% {
+    transform-origin: 0 163px;
+    transform: skew(184deg, 175deg);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes left-to-right {
+  0 {
+    transform: scaleY(1);
+  }
+  16% {
+    transform: scaleY(1);
+  }
+  33% {
+    transform-origin: 0 0px;
+    transform-style: preserve-3d;
+    transform: translate3d(49px, 8px, 40px);
+  }
+  80% {
+    transform-origin: 0 0px;
+    transform-style: preserve-3d;
+    transform: translate3d(49px, 8px, 40px);
+  }
+  100% {
+    transform-origin: 0 0px;
+    transform-style: preserve-3d;
+    transform: translate3d(49px, 8px, 40px);
+  }
+}
+
+@keyframes small-eyes {
+  0 {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(1, 1, 1);
+  }
+  16% {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(1, 1, 1);
+  }
+  33% {
+    transform-origin: center;
+    transform-style: preserve-3d;
+
+    transform: scale3d(0.85, 1, 1);
+  }
+  80% {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(0.85, 1, 1);
+  }
+  100% {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(0.85, 1, 1);
+  }
+}
+
+
+/* @keyframes small-eyes {
+  0%{
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform: scale3d(0.85, 1, 1);
+  }
+} */
+
+@keyframes resize-eyes {
+  0 {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(0.85, 1, 1);
+  }
+  16% {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(0.85, 1, 1);
+  }
+  33% {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(1, 1, 1);
+  }
+  80% {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+@keyframes right-to-left {
+  0%{
+    transform-origin: 0 0px;
+    transform-style: preserve-3d;
+    transform: translate3d(49px, 8px, 40px);
+  }
+  10%{
+    transform-origin: 0 0px;
+    transform-style: preserve-3d;
+    transform: translate3d(49px, 8px, 40px);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+</style>
